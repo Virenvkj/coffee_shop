@@ -1,5 +1,4 @@
-
-import 'package:coffee_shop/presentation/dashboard_screen.dart';
+import 'package:coffee_shop/presentation/onboarding/onboarding_slide.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const DashboardScreen()
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const OnboardingSlide());
   }
 }
