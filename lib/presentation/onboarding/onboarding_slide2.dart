@@ -1,15 +1,14 @@
-import 'package:coffee_shop/presentation/onboarding/onboarding_slide2.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnboardingSlide extends StatefulWidget {
-  const OnboardingSlide({super.key});
+class OnboardingSlide2 extends StatefulWidget {
+  const OnboardingSlide2({super.key});
 
   @override
-  State<OnboardingSlide> createState() => _OnboardingSlideState();
+  State<OnboardingSlide2> createState() => _OnboardingSlide2State();
 }
 
-class _OnboardingSlideState extends State<OnboardingSlide> {
+class _OnboardingSlide2State extends State<OnboardingSlide2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +38,13 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
               ),
               const SizedBox(height: 52),
               Image.asset(
-                'assets/images/onboarding/slide1.png',
+                'assets/images/onboarding/slide2.png',
                 width: 284,
                 height: 261,
               ),
               const SizedBox(height: 63),
               const Text(
-                'Choose and customize your Drinks',
+                'Quickly and easly',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -53,7 +52,7 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
               ),
               const SizedBox(height: 16),
               const Text(
-                'Customize your own drink exactly how you like it by adding any topping you like!!!',
+                'You can place your order quickly and easly without wasting time. You can also schedule orders via your smarthphone.',
                 style: TextStyle(
                   fontSize: 16,
                 ),
@@ -65,7 +64,7 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const AnimatedSmoothIndicator(
-                    activeIndex: 0,
+                    activeIndex: 1,
                     count: 3,
                     effect: ExpandingDotsEffect(
                       activeDotColor: Color(0XFF5D4037),
@@ -75,44 +74,33 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
                       expansionFactor: 2,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      // Navigator object
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const OnboardingSlide2(),
-                        ),
-                      );
-                      // Push
-                    },
-                    child: Container(
-                      width: 160,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 16,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0XFF5D4037),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(),
-                          Text(
-                            'NEXT',
-                            style: TextStyle(
-                              color: Color(0XFFFEFEFE),
-                              fontSize: 14,
-                            ),
-                          ),
-                          Icon(
-                            Icons.arrow_forward,
+                  Container(
+                    width: 160,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 16,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFF5D4037),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(),
+                        Text(
+                          'NEXT',
+                          style: TextStyle(
                             color: Color(0XFFFEFEFE),
-                            size: 16,
-                          )
-                        ],
-                      ),
+                            fontSize: 14,
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Color(0XFFFEFEFE),
+                          size: 16,
+                        )
+                      ],
                     ),
                   ),
                 ],
