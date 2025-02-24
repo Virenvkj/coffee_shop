@@ -1,3 +1,4 @@
+import 'package:coffee_shop/presentation/common_widgets/skip_button.dart';
 import 'package:coffee_shop/presentation/onboarding/onboarding_slide2.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -24,19 +25,7 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Skip',
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Color(0XFF3C3C3C),
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+              const SkipButton(),
               const SizedBox(height: 52),
               Image.asset(
                 'assets/images/onboarding/slide1.png',
@@ -77,13 +66,11 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator object
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const OnboardingSlide2(),
                         ),
                       );
-                      // Push
                     },
                     child: Container(
                       width: 160,
@@ -124,3 +111,11 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
     );
   }
 }
+
+
+// Image
+// Header
+// Label
+// Index
+// ButtonText
+// OnTap of Button

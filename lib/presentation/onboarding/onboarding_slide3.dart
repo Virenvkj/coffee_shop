@@ -1,3 +1,5 @@
+import 'package:coffee_shop/presentation/authentication/login_screen.dart';
+import 'package:coffee_shop/presentation/common_widgets/skip_button.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -23,19 +25,7 @@ class _OnboardingSlide3State extends State<OnboardingSlide3> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Skip',
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Color(0XFF3C3C3C),
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+              const SkipButton(),
               const SizedBox(height: 52),
               Image.asset(
                 'assets/images/onboarding/slide3.png',
@@ -74,31 +64,42 @@ class _OnboardingSlide3State extends State<OnboardingSlide3> {
                       expansionFactor: 2,
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 16,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0XFF5D4037),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Login/Register',
-                          style: TextStyle(
-                            color: Color(0XFFFEFEFE),
-                            fontSize: 14,
-                          ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
                         ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Color(0XFFFEFEFE),
-                          size: 16,
-                        )
-                      ],
+                        (val) => false,
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 16,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0XFF5D4037),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Login/Register',
+                            style: TextStyle(
+                              color: Color(0XFFFEFEFE),
+                              fontSize: 14,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Color(0XFFFEFEFE),
+                            size: 16,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

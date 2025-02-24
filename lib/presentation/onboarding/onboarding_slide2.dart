@@ -1,3 +1,5 @@
+import 'package:coffee_shop/presentation/common_widgets/skip_button.dart';
+import 'package:coffee_shop/presentation/onboarding/onboarding_slide3.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -23,19 +25,7 @@ class _OnboardingSlide2State extends State<OnboardingSlide2> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Skip',
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Color(0XFF3C3C3C),
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+              const SkipButton(),
               const SizedBox(height: 52),
               Image.asset(
                 'assets/images/onboarding/slide2.png',
@@ -74,33 +64,42 @@ class _OnboardingSlide2State extends State<OnboardingSlide2> {
                       expansionFactor: 2,
                     ),
                   ),
-                  Container(
-                    width: 160,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 16,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0XFF5D4037),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(),
-                        Text(
-                          'NEXT',
-                          style: TextStyle(
-                            color: Color(0XFFFEFEFE),
-                            fontSize: 14,
-                          ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const OnboardingSlide3(),
                         ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Color(0XFFFEFEFE),
-                          size: 16,
-                        )
-                      ],
+                      );
+                    },
+                    child: Container(
+                      width: 160,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 16,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0XFF5D4037),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(),
+                          Text(
+                            'NEXT',
+                            style: TextStyle(
+                              color: Color(0XFFFEFEFE),
+                              fontSize: 14,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Color(0XFFFEFEFE),
+                            size: 16,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
