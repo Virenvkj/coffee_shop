@@ -1,16 +1,25 @@
 import 'package:coffee_shop/presentation/common_widgets/skip_button.dart';
-import 'package:coffee_shop/presentation/onboarding/onboarding_slide2.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnboardingSlide extends StatefulWidget {
-  const OnboardingSlide({super.key});
+class OnboardingSlide extends StatelessWidget {
+  final String imageUrl;
+  final String labelText;
+  final String descriptionText;
+  final int index;
+  final String buttonText;
+  final Function onTapButton;
 
-  @override
-  State<OnboardingSlide> createState() => _OnboardingSlideState();
-}
+  const OnboardingSlide({
+    super.key,
+    required this.imageUrl,
+    required this.labelText,
+    required this.descriptionText,
+    required this.index,
+    required this.buttonText,
+    required this.onTapButton,
+  });
 
-class _OnboardingSlideState extends State<OnboardingSlide> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,22 +37,22 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
               const SkipButton(),
               const SizedBox(height: 52),
               Image.asset(
-                'assets/images/onboarding/slide1.png',
+                imageUrl,
                 width: 284,
                 height: 261,
               ),
               const SizedBox(height: 63),
-              const Text(
-                'Choose and customize your Drinks',
-                style: TextStyle(
+              Text(
+                labelText,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Customize your own drink exactly how you like it by adding any topping you like!!!',
-                style: TextStyle(
+              Text(
+                descriptionText,
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
@@ -53,10 +62,10 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const AnimatedSmoothIndicator(
-                    activeIndex: 0,
+                  AnimatedSmoothIndicator(
+                    activeIndex: index,
                     count: 3,
-                    effect: ExpandingDotsEffect(
+                    effect: const ExpandingDotsEffect(
                       activeDotColor: Color(0XFF5D4037),
                       dotColor: Color(0XFFCACACA),
                       dotHeight: 12,
@@ -65,15 +74,12 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const OnboardingSlide2(),
-                        ),
-                      );
-                    },
+                    // onTap: () {
+                    //   onTapButton();
+                    // },
+                    // onTap: onTapButton.call(),
+                    onTap: () => onTapButton(),
                     child: Container(
-                      width: 160,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
                         vertical: 16,
@@ -82,18 +88,18 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
                         color: const Color(0XFF5D4037),
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(),
+                          const SizedBox(),
                           Text(
-                            'NEXT',
-                            style: TextStyle(
+                            buttonText,
+                            style: const TextStyle(
                               color: Color(0XFFFEFEFE),
                               fontSize: 14,
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_forward,
                             color: Color(0XFFFEFEFE),
                             size: 16,
@@ -111,11 +117,3 @@ class _OnboardingSlideState extends State<OnboardingSlide> {
     );
   }
 }
-
-
-// Image
-// Header
-// Label
-// Index
-// ButtonText
-// OnTap of Button

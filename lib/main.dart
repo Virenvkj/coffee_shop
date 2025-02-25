@@ -1,4 +1,4 @@
-import 'package:coffee_shop/presentation/onboarding/onboarding_slide.dart';
+import 'package:coffee_shop/presentation/onboarding/onboarding_slide1.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const OnboardingSlide(),
+      home: const OnboardingSlide1(),
     );
   }
 }

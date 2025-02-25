@@ -5,11 +5,14 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Center(
-        child: InkWell(onTap: (){
-          Navigator.of(context).pop();
-        },child:const Text("Login"),),
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text("Login"),
+        ),
       ),
     );
   }
