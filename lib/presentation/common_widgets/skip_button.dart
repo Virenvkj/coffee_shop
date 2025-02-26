@@ -2,7 +2,6 @@ import 'package:coffee_shop/presentation/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SkipButton extends StatelessWidget {
-  
   const SkipButton({super.key});
 
   @override
