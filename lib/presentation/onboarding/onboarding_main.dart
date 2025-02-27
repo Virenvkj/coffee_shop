@@ -4,7 +4,6 @@ import 'package:coffee_shop/model/onboarding_model.dart';
 import 'package:coffee_shop/presentation/authentication/login_screen.dart';
 import 'package:coffee_shop/presentation/onboarding/onboarding_slide_data.dart';
 
-
 class OnboardingMain extends StatelessWidget {
   OnboardingMain({super.key});
 
@@ -14,7 +13,6 @@ class OnboardingMain extends StatelessWidget {
       descriptionText:
           'Customize your own drink exactly how you like it by adding any topping you like!!!',
       imageUrl: 'assets/images/onboarding/slide1.png',
-      index: 0,
       labelText: 'Choose and customize your Drinks',
     ),
     OnboardingModel(
@@ -22,7 +20,6 @@ class OnboardingMain extends StatelessWidget {
       descriptionText:
           'You can place your order quickly and easly without wasting time. You can also schedule orders via your smarthphone.',
       imageUrl: 'assets/images/onboarding/slide2.png',
-      index: 1,
       labelText: 'Quickly and easly',
     ),
     OnboardingModel(
@@ -30,7 +27,6 @@ class OnboardingMain extends StatelessWidget {
       descriptionText:
           'Exciting prizes await you! Redeem yours by collecting all the points after purchase in the app!',
       imageUrl: 'assets/images/onboarding/slide3.png',
-      index: 2,
       labelText: 'Get and Redeem Voucher',
     ),
   ];
