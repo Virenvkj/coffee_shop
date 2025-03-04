@@ -1,3 +1,7 @@
+import 'package:coffee_shop/presentation/authentication/login_screen.dart';
+import 'package:coffee_shop/presentation/authentication/privacy_policy.dart';
+import 'package:coffee_shop/presentation/authentication/terms_of_service.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -112,6 +116,114 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 16),
+                Center(
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'By tapping "Register" you agree to our\n',
+                          style:
+                              TextStyle(fontSize: 12, color: Color(0XFF7C7C7C)),
+                        ),
+                        TextSpan(
+                          text: 'Terms of Use',
+                          style: const TextStyle(
+                              fontSize: 12, color: Color(0XFF032172)),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TermsOfService(),
+                                  ),
+                                ),
+                        ),
+                        const TextSpan(
+                          text: ' and ',
+                          style:
+                              TextStyle(fontSize: 12, color: Color(0XFF7C7C7C)),
+                        ),
+                        TextSpan(
+                          text: 'Privacy Policy',
+                          style: const TextStyle(
+                              fontSize: 12, color: Color(0XFF032172)),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PrivacyPolicy(),
+                                ),
+                              );
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 28),
+                Center(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      fixedSize: WidgetStatePropertyAll(
+                        Size(screenWidth, 48),
+                      ),
+                      backgroundColor: const WidgetStatePropertyAll(
+                        Color(0XFFCACACA),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                        (val) => false,
+                      );
+                    },
+                    child: const Text(
+                      "Register",
+                      style: TextStyle(
+                        color: Color(0XFFFFFFFF),
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 183),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'Have an account? ',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0XFF555555),
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Login',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Color(0XFF5D4037),
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginScreen(),
+                                ),
+                              );
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
