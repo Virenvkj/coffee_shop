@@ -46,32 +46,31 @@ class OnboardingMain extends StatelessWidget {
           child: PageView.builder(
             controller: pageController,
             itemCount: onboardingSlideData.length,
-            itemBuilder: (context, index) => OnboardingSlideData(
-              imageUrl: onboardingSlideData[index].imageUrl,
-              labelText: onboardingSlideData[index].labelText,
-              descriptionText: onboardingSlideData[index].descriptionText,
-              buttonText: onboardingSlideData[index].buttonText,
-              slideLength: onboardingSlideData.length,
-              currentIndex: index,
-              onTapButton: () {
-                if (index == (onboardingSlideData.length - 1)) {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegistrationScreen(),
+            itemBuilder: (context, index) {
+              return OnboardingSlideData(
+                onboardingData: onboardingSlideData[index],
+                slideLength: onboardingSlideData.length,
+                currentIndex: index,
+                onTapButton: () {
+                  if (index == (onboardingSlideData.length - 1)) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegistrationScreen(),
+                      ),
+                      (val) => false,
+                    );
+                    return;
+                  }
+                  pageController.nextPage(
+                    duration: const Duration(
+                      milliseconds: 100,
                     ),
-                    (val) => false,
+                    curve: Curves.ease,
                   );
-                  return;
-                }
-                pageController.nextPage(
-                  duration: const Duration(
-                    milliseconds: 100,
-                  ),
-                  curve: Curves.ease,
-                );
-              },
-            ),
+                },
+              );
+            },
           ),
         ),
       ),

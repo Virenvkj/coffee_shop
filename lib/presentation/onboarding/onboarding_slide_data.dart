@@ -1,3 +1,4 @@
+import 'package:coffee_shop/model/onboarding_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -5,20 +6,14 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:coffee_shop/presentation/common_widgets/skip_button.dart';
 
 class OnboardingSlideData extends StatefulWidget {
-  final String imageUrl;
-  final String labelText;
-  final String descriptionText;
-  final String buttonText;
+  final OnboardingModel onboardingData;
   final int slideLength;
   final int currentIndex;
   final Function onTapButton;
 
   const OnboardingSlideData({
     super.key,
-    required this.imageUrl,
-    required this.labelText,
-    required this.descriptionText,
-    required this.buttonText,
+    required this.onboardingData,
     required this.slideLength,
     required this.currentIndex,
     required this.onTapButton,
@@ -41,13 +36,13 @@ class _OnboardingSlideDataState extends State<OnboardingSlideData> {
         const SkipButton(),
         SizedBox(height: screenHeight * 0.064),
         Image.asset(
-          widget.imageUrl,
+          widget.onboardingData.imageUrl,
           width: screenWidth * 0.757,
           height: screenHeight * 0.321,
         ),
         SizedBox(height: screenHeight * 0.077),
         Text(
-          widget.labelText,
+          widget.onboardingData.labelText,
           style: TextStyle(
             fontSize: screenHeight * 0.0246,
             fontWeight: FontWeight.bold,
@@ -55,7 +50,7 @@ class _OnboardingSlideDataState extends State<OnboardingSlideData> {
         ),
         SizedBox(height: screenHeight * 0.0197),
         Text(
-          widget.descriptionText,
+          widget.onboardingData.descriptionText,
           style: TextStyle(
             fontSize: screenHeight * 0.0197,
           ),
@@ -94,7 +89,7 @@ class _OnboardingSlideDataState extends State<OnboardingSlideData> {
                   children: [
                     const SizedBox(),
                     Text(
-                      widget.buttonText,
+                      widget.onboardingData.buttonText,
                       style: TextStyle(
                         color: const Color(0XFFFEFEFE),
                         fontSize: screenHeight * 0.0172,
