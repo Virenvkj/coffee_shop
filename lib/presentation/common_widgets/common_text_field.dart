@@ -5,12 +5,16 @@ class CommonTextField extends StatefulWidget {
     super.key,
     required this.controller,
     required this.labelName,
+    this.textInputAction,
+    this.textInputType,
     this.hintText,
   });
 
   final String labelName;
   final TextEditingController controller;
   final String? hintText;
+  final TextInputAction? textInputAction;
+  final TextInputType? textInputType;
 
   @override
   State<CommonTextField> createState() => _CommonTextFieldState();
@@ -31,6 +35,8 @@ class _CommonTextFieldState extends State<CommonTextField> {
         ),
         const SizedBox(height: 4),
         TextField(
+          keyboardType: widget.textInputType,
+          textInputAction: widget.textInputAction,
           controller: widget.controller,
           cursorColor: const Color(0XFF8A8A8A),
           cursorHeight: 16,
