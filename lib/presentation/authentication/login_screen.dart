@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0XFFF5F5F5),
       body: SafeArea(
         child: Padding(
@@ -28,37 +29,40 @@ class _LoginScreenState extends State<LoginScreen> {
             horizontal: screenWidth * 0.053,
           ),
           child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: screenHeight * 0.127),
-                const ShopFeeIcon(),
-                const SizedBox(height: 28),
-                CommonTextField(
-                  controller: numberController,
-                  labelName: 'Mobile No.',
-                  hintText: 'Input your number',
-                ),
-                const SizedBox(height: 16),
-                AuthButton(
-                  buttonText: 'Login',
-                  onTap: () {},
-                ),
-                const SizedBox(height: 268),
-                AuthScreenFooterText(
-                  initialText: 'Don’t have an account? ',
-                  linkText: 'Register',
-                  onTapLink: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RegistrationScreen(),
-                      ),
-                      (val) => false,
-                    );
-                  },
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: screenHeight * 0.127),
+                  const ShopFeeIcon(),
+                  const SizedBox(height: 28),
+                  CommonTextField(
+                    controller: numberController,
+                    labelName: 'Mobile No.',
+                    hintText: 'Input your number',
+                    textInputType: TextInputType.number,
+                  ),
+                  const SizedBox(height: 16),
+                  AuthButton(
+                    buttonText: 'Login',
+                    onTap: () {},
+                  ),
+                  const SizedBox(height: 268),
+                  AuthScreenFooterText(
+                    initialText: 'Don’t have an account? ',
+                    linkText: 'Register',
+                    onTapLink: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegistrationScreen(),
+                        ),
+                        (val) => false,
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
