@@ -1,4 +1,5 @@
 import 'package:coffee_shop/presentation/authentication/otp_loading_screen.dart';
+import 'package:coffee_shop/presentation/common_widgets/sent_otp_popup_common_cta.dart';
 import 'package:flutter/material.dart';
 
 class SendOtpCodePopup extends StatelessWidget {
@@ -66,30 +67,16 @@ class SendOtpCodePopup extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
+                SendOtpPopupCommonCta(
+                  buttonText: 'Cancel',
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-                    decoration: BoxDecoration(
-                      color: const Color(0XFFFEFEFE),
-                      border: Border.all(
-                        color: const Color(0XFF5D4037),
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0XFF3C3C3C),
-                      ),
-                    ),
-                  ),
+                  buttonBackground: const Color(0XFFFEFEFE),
+                  buttonTextColor: const Color(0XFF3C3C3C),
                 ),
-                InkWell(
+                SendOtpPopupCommonCta(
+                  buttonText: 'Continue',
                   onTap: () {
                     Navigator.of(context).pop();
                     Navigator.push(
@@ -99,24 +86,6 @@ class SendOtpCodePopup extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-                    decoration: BoxDecoration(
-                      color: const Color(0XFF5D4037),
-                      border: Border.all(
-                        color: const Color(0XFF5D4037),
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: const Text(
-                      'Continue',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0XFFFEFEFE),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             )

@@ -1,7 +1,24 @@
+import 'package:coffee_shop/presentation/authentication/confirm_otp_screen.dart';
 import 'package:flutter/material.dart';
 
-class OtpLoadingScreen extends StatelessWidget {
+class OtpLoadingScreen extends StatefulWidget {
   const OtpLoadingScreen({super.key});
+
+  @override
+  State<OtpLoadingScreen> createState() => _OtpLoadingScreenState();
+}
+
+class _OtpLoadingScreenState extends State<OtpLoadingScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 2), () async {
+      if (!mounted) return;
+      await Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const ConfirmOtpScreen()),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
