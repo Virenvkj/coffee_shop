@@ -1,6 +1,7 @@
 import 'package:coffee_shop/presentation/authentication/otp_textfield.dart';
 import 'package:coffee_shop/presentation/common_widgets/auth_button.dart';
 import 'package:coffee_shop/presentation/common_widgets/auth_screen_footer_text.dart';
+import 'package:coffee_shop/presentation/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmOtpScreen extends StatefulWidget {
@@ -106,7 +107,13 @@ class _ConfirmOtpScreenState extends State<ConfirmOtpScreen> {
                   const SizedBox(height: 102),
                   AuthButton(
                     buttonText: 'Confirm',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                          (val) => false);
+                    },
                   ),
                 ],
               ),
