@@ -30,9 +30,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       if (carouselIndex < 2) {
         scrollOffset = scrollOffset + 400;
         homeCarouselController.jumpTo(scrollOffset);
-        setState(() {});
+
         carouselIndex++;
+      } else if (carouselIndex == 2) {
+        carouselIndex = 0;
+        scrollOffset = 0;
+        homeCarouselController.jumpTo(scrollOffset);
       }
+      setState(() {});
     });
   }
 
