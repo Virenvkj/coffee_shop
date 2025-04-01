@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
 import 'package:coffee_shop/presentation/common_widgets/home_carousel_item.dart';
 import 'package:coffee_shop/presentation/common_widgets/search_text_field.dart';
@@ -12,24 +11,36 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  // int carouselIndex = 0;
-  // late CarouselController homeCarouselController;
-  // final carouselTimer = Timer.periodic(
-  //   const Duration(seconds: 1),
-  //   (val) => _incrementCounter.call,
-  // );
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  int carouselIndex = 0;
+  double scrollOffset = 0;
+  late CarouselController homeCarouselController;
+  late TabController tabController;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   homeCarouselController = CarouselController(initialItem: carouselIndex);
-  //   homeCarouselController.addListener(_automateCarousel);
-  // }
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 3, vsync: this);
+    homeCarouselController = CarouselController(initialItem: carouselIndex);
+    _incrementCounter();
+  }
 
-  // _incrementCounter() {
-  //   carouselIndex++;
-  // }
+  _incrementCounter() {
+    Timer.periodic(const Duration(seconds: 3), (val) {
+      if (carouselIndex < 2) {
+        scrollOffset = scrollOffset + 400;
+        homeCarouselController.jumpTo(scrollOffset);
+        setState(() {});
+        carouselIndex++;
+      }
+    });
+  }
+
+  List<String> carouselImages = [
+    'assets/images/home/carousel/carousel1.png',
+    'assets/images/home/carousel/carousel2.png',
+    'assets/images/home/carousel/carousel3.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -69,19 +80,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: screenHeight * 0.168,
                 width: screenWidth,
                 child: CarouselView(
+                  controller: homeCarouselController,
                   scrollDirection: Axis.horizontal,
                   itemSnapping: true,
                   itemExtent: screenWidth,
+                  children: carouselImages
+                      .map(
+                        (image) => HomeCarouselItem(imageUrl: image),
+                      )
+                      .toList(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TabBar(
+                labelStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Color(0XFF5D4037),
+                  fontWeight: FontWeight.w500,
+                ),
+                indicatorColor: const Color(0XFF5D4037),
+                indicatorSize: TabBarIndicatorSize.tab,
+                dividerColor: const Color(0XFFEFEBE9),
+                controller: tabController,
+                unselectedLabelColor: const Color(0XFF868686),
+                tabs: const [
+                  Tab(text: 'Coffee'),
+                  Tab(text: 'Non Coffee'),
+                  Tab(text: 'Pastry'),
+                ],
+              ),
+              Flexible(
+                child: TabBarView(
+                  controller: tabController,
                   children: const [
-                    HomeCarouselItem(
-                      imageUrl: 'assets/images/home/carousel/carousel1.png',
-                    ),
-                    HomeCarouselItem(
-                      imageUrl: 'assets/images/home/carousel/carousel2.png',
-                    ),
-                    HomeCarouselItem(
-                      imageUrl: 'assets/images/home/carousel/carousel3.png',
-                    ),
+                    Text('Hello from tab 1'),
+                    Text('Hello from tab 2'),
+                    Text('Hello from tab 3'),
                   ],
                 ),
               ),
