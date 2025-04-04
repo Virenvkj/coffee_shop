@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:coffee_shop/model/pills_model.dart';
 import 'package:coffee_shop/presentation/common_widgets/home_carousel_item.dart';
 import 'package:coffee_shop/presentation/common_widgets/pills.dart';
+import 'package:coffee_shop/presentation/common_widgets/product_tile.dart';
 import 'package:coffee_shop/presentation/common_widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +48,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     'assets/images/home/carousel/carousel1.png',
     'assets/images/home/carousel/carousel2.png',
     'assets/images/home/carousel/carousel3.png',
+  ];
+
+  List<PillsModel> pillsList = const [
+    PillsModel(icon: Icons.filter, text: 'Filter'),
+    PillsModel(icon: Icons.star, text: 'Rating 4.5+'),
+    PillsModel(icon: Icons.price_check_rounded, text: 'Price'),
+    PillsModel(icon: Icons.discount, text: 'Promo'),
   ];
 
   @override
@@ -121,34 +130,42 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   controller: tabController,
                   children: [
                     Column(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
                         const SizedBox(height: 8),
                         SizedBox(
                           height: screenHeight * 0.0517,
-                          child: ListView(
+                          child: ListView.builder(
                             shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            itemCount: pillsList.length,
                             scrollDirection: Axis.horizontal,
-                            children: const [
-                              Pills(
-                                icon: Icons.filter,
-                                text: 'Filter',
-                              ),
-                              Pills(
-                                icon: Icons.star,
-                                text: 'Rating 4.5+',
-                              ),
-                              Pills(
-                                icon: Icons.price_check_rounded,
-                                text: 'Price',
-                              ),
-                              Pills(
-                                icon: Icons.discount,
-                                text: 'Promo',
-                              ),
-                            ],
+                            itemBuilder: (context, index) => Pills(
+                              pillData: pillsList[index],
+                            ),
                           ),
                         ),
+                        const SizedBox(height: 6),
+                        // const ProductTile(),
+                        Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            Container(
+                              height: 200,
+                              width: 200,
+                              color: Colors.red,
+                            ),
+                            Container(
+                              height: 100,
+                              width: 100,
+                              color: Colors.yellow,
+                            ),
+                              Container(
+                              height: 50,
+                              width: 50,
+                              color: Colors.white,
+                            ),
+                          ],
+                        )
                       ],
                     ),
                     const Text('Hello from tab 2'),
