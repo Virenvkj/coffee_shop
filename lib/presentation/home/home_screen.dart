@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:coffee_shop/presentation/common_widgets/home_carousel_item.dart';
+import 'package:coffee_shop/presentation/common_widgets/pills.dart';
 import 'package:coffee_shop/presentation/common_widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -116,11 +117,42 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
               Flexible(
                 child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: tabController,
-                  children: const [
-                    Text('Hello from tab 1'),
-                    Text('Hello from tab 2'),
-                    Text('Hello from tab 3'),
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const SizedBox(height: 8),
+                        SizedBox(
+                          height: screenHeight * 0.0517,
+                          child: ListView(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            children: const [
+                              Pills(
+                                icon: Icons.filter,
+                                text: 'Filter',
+                              ),
+                              Pills(
+                                icon: Icons.star,
+                                text: 'Rating 4.5+',
+                              ),
+                              Pills(
+                                icon: Icons.price_check_rounded,
+                                text: 'Price',
+                              ),
+                              Pills(
+                                icon: Icons.discount,
+                                text: 'Promo',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Text('Hello from tab 2'),
+                    const Text('Hello from tab 3'),
                   ],
                 ),
               ),
