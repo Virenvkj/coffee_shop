@@ -145,27 +145,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           ),
                         ),
                         const SizedBox(height: 6),
-                        // const ProductTile(),
-                        Stack(
-                          alignment: Alignment.bottomCenter,
-                          children: [
-                            Container(
-                              height: 200,
-                              width: 200,
-                              color: Colors.red,
-                            ),
-                            Container(
-                              height: 100,
-                              width: 100,
-                              color: Colors.yellow,
-                            ),
-                              Container(
-                              height: 50,
-                              width: 50,
-                              color: Colors.white,
-                            ),
-                          ],
-                        )
+                        const ProductTile(
+                          productDescription: 'hi there how ',
+                        ),
                       ],
                     ),
                     const Text('Hello from tab 2'),
