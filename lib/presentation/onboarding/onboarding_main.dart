@@ -1,3 +1,5 @@
+import 'package:coffee_shop/constants/app_assets.dart';
+import 'package:coffee_shop/constants/app_strings.dart';
 import 'package:coffee_shop/presentation/authentication/registration_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,14 +15,14 @@ class OnboardingMain extends StatelessWidget {
       descriptionText:
           'Customize your own drink exactly how you like it by adding any topping you like!!!',
       imageUrl: 'assets/images/onboarding/slide1.png',
-      labelText: 'Choose and customize your Drinks',
+      labelText: AppStrings.onboardingSlideOneHeader,
     ),
     OnboardingModel(
       buttonText: 'NEXT',
       descriptionText:
           'You can place your order quickly and easly without wasting time. You can also schedule orders via your smarthphone.',
-      imageUrl: 'assets/images/onboarding/slide2.png',
-      labelText: 'Quickly and easly',
+      imageUrl: AppAssets.onboardingSlideTwo,
+      labelText: AppStrings.onboardingSlideTwoHeader,
     ),
     OnboardingModel(
       buttonText: 'Login/Register',
