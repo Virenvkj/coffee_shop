@@ -19,6 +19,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   double scrollOffset = 0;
   late CarouselController homeCarouselController;
   late TabController tabController;
+  late Timer timer;
+
+  @override
+  void dispose() {
+    homeCarouselController.dispose();
+    tabController.dispose();
+    timer.cancel();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -29,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   _incrementCounter() {
-    Timer.periodic(const Duration(seconds: 3), (val) {
+    timer = Timer.periodic(const Duration(seconds: 3), (val) {
+      if (!mounted) return;
       if (carouselIndex < 2) {
         scrollOffset = scrollOffset + 400;
         homeCarouselController.jumpTo(scrollOffset);
-
         carouselIndex++;
       } else if (carouselIndex == 2) {
         carouselIndex = 0;
@@ -71,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             vertical: 8,
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
@@ -130,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   controller: tabController,
                   children: [
                     Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         const SizedBox(height: 8),
                         SizedBox(
@@ -145,8 +156,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           ),
                         ),
                         const SizedBox(height: 6),
-                        const ProductTile(
-                          productDescription: 'hi there how ',
+                        SizedBox(
+                          height: screenHeight * 0.455,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: 10,
+                            itemBuilder: (context, index) {
+                              return const ProductTile(
+                                productDescription: 'hi there how ',
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
