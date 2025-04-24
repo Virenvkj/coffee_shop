@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:coffee_shop/model/pills_model.dart';
-import 'package:coffee_shop/presentation/common_widgets/home_carousel_item.dart';
-import 'package:coffee_shop/presentation/common_widgets/pills.dart';
-import 'package:coffee_shop/presentation/common_widgets/product_tile.dart';
-import 'package:coffee_shop/presentation/common_widgets/search_text_field.dart';
+import 'package:coffee_shop/presentation/home/carousel_home_screen.dart';
+import 'package:coffee_shop/presentation/home/coffee_tab.dart';
+import 'package:coffee_shop/presentation/home/search_bar.dart' as sb;
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,24 +51,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     });
   }
 
-  List<String> carouselImages = [
-    'assets/images/home/carousel/carousel1.png',
-    'assets/images/home/carousel/carousel2.png',
-    'assets/images/home/carousel/carousel3.png',
-  ];
-
-  List<PillsModel> pillsList = const [
-    PillsModel(icon: Icons.filter, text: 'Filter'),
-    PillsModel(icon: Icons.star, text: 'Rating 4.5+'),
-    PillsModel(icon: Icons.price_check_rounded, text: 'Price'),
-    PillsModel(icon: Icons.discount, text: 'Promo'),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: const Color(0XFFFEFEFE),
       body: SafeArea(
@@ -83,39 +65,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Expanded(
-                    child: SearchTextField(),
-                  ),
-                  const SizedBox(width: 20),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.notifications_outlined,
-                      color: Color(0XFF5D4037),
-                      size: 24,
-                    ),
-                  )
-                ],
-              ),
+              const sb.SearchBar(),
               const SizedBox(height: 16),
-              SizedBox(
-                height: screenHeight * 0.168,
-                width: screenWidth,
-                child: CarouselView(
-                  controller: homeCarouselController,
-                  scrollDirection: Axis.horizontal,
-                  itemSnapping: true,
-                  itemExtent: screenWidth,
-                  children: carouselImages
-                      .map(
-                        (image) => HomeCarouselItem(imageUrl: image),
-                      )
-                      .toList(),
-                ),
-              ),
+              const CarouselHomeScreen(),
               const SizedBox(height: 16),
               TabBar(
                 labelStyle: const TextStyle(
@@ -138,40 +90,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 child: TabBarView(
                   physics: const NeverScrollableScrollPhysics(),
                   controller: tabController,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const SizedBox(height: 8),
-                        SizedBox(
-                          height: screenHeight * 0.0517,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: const ClampingScrollPhysics(),
-                            itemCount: pillsList.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => Pills(
-                              pillData: pillsList[index],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        SizedBox(
-                          height: screenHeight * 0.455,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: 10,
-                            itemBuilder: (context, index) {
-                              return const ProductTile(
-                                productDescription: 'hi there how ',
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Text('Hello from tab 2'),
-                    const Text('Hello from tab 3'),
+                  children: const [
+                    CoffeeTab(),
+                    CoffeeTab(),
+                    CoffeeTab(),
                   ],
                 ),
               ),

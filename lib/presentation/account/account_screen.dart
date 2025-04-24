@@ -1,3 +1,4 @@
+import 'package:coffee_shop/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class AccountScreen extends StatelessWidget {
     return const Scaffold(
       body: SafeArea(
         child: Center(
-          child: Text("Welcome to account"),
+          child: Text(AppStrings.welcomeToAccount),
         ),
       ),
     );
