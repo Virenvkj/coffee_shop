@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchTextField extends StatefulWidget {
   const SearchTextField({super.key});
@@ -13,20 +14,20 @@ class _SearchTextFieldState extends State<SearchTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 40.h,
       child: TextField(
         controller: searchController,
-        style: const TextStyle(
-          fontSize: 14,
-          color: Color(0XFF3C3C3C),
+        style: TextStyle(
+          fontSize: 14.sp,
+          color: const Color(0XFF3C3C3C),
         ),
         cursorColor: const Color(0XFF8A8A8A),
-        cursorHeight: 16,
+        cursorHeight: 16.h,
         cursorErrorColor: Colors.red,
         decoration: InputDecoration(
-          suffixIcon: const Icon(
+          suffixIcon: Icon(
             Icons.search,
-            size: 24,
+            size: 24.r,
           ),
           suffixIconColor: const Color(0XFFCACACA),
           focusedBorder: OutlineInputBorder(
@@ -37,9 +38,9 @@ class _SearchTextFieldState extends State<SearchTextField> {
             borderRadius: BorderRadius.circular(16),
           ),
           hintText: 'What would you like to drink today?',
-          hintStyle: const TextStyle(
-            color: Color(0XFFCACACA),
-            fontSize: 12,
+          hintStyle: TextStyle(
+            color: const Color(0XFFCACACA),
+            fontSize: 12.sp,
             fontWeight: FontWeight.normal,
           ),
           border: OutlineInputBorder(
@@ -47,7 +48,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
               width: 2,
               color: Color(0XFFD7CCC8),
             ),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
           ),
         ),
       ),

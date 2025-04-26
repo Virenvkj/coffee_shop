@@ -2,6 +2,7 @@ import 'package:coffee_shop/presentation/account/account_screen.dart';
 import 'package:coffee_shop/presentation/history/history_screen.dart';
 import 'package:coffee_shop/presentation/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -34,14 +35,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
             )
           ],
           color: const Color(0xffFEFEFE),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
         ),
         child: BottomNavigationBar(
+          iconSize: 24.r,
           selectedItemColor: const Color(0xff5D4037),
           unselectedItemColor: const Color(0xffCACACA),
           currentIndex: bottomNavBarIndex,
-          selectedLabelStyle: const TextStyle(
-            fontSize: 10,
+          selectedLabelStyle: TextStyle(
+            fontSize: 10.sp,
           ),
           enableFeedback: true,
           onTap: (index) {
@@ -51,8 +53,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               });
             }
           },
-          unselectedLabelStyle: const TextStyle(
-            fontSize: 10,
+          unselectedLabelStyle: TextStyle(
+            fontSize: 10.sp,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,

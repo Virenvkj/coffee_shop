@@ -2,6 +2,7 @@ import 'package:coffee_shop/model/pills_model.dart';
 import 'package:coffee_shop/presentation/common_widgets/pills.dart';
 import 'package:coffee_shop/presentation/common_widgets/product_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CoffeeTab extends StatefulWidget {
   const CoffeeTab({super.key});
@@ -20,14 +21,12 @@ class _CoffeeTabState extends State<CoffeeTab> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
         SizedBox(
-          height: screenHeight * 0.0527,
+          height: 34.h,
           child: ListView.builder(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
@@ -42,9 +41,9 @@ class _CoffeeTabState extends State<CoffeeTab> {
             ),
           ),
         ),
-        const SizedBox(height: 6),
+        SizedBox(height: 6.h),
         SizedBox(
-          height: screenHeight * 0.455,
+          height: 305.h,
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: 10,
