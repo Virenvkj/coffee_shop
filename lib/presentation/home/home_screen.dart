@@ -12,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  double scrollOffset = 0;
   late TabController tabController;
 
   @override
@@ -34,50 +33,52 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const sb.SearchBar(),
-              SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const CarouselHomeScreen(),
-                    TabBar(
-                      labelPadding: EdgeInsets.zero,
-                      labelStyle: TextStyle(
-                        fontSize: 16.sp,
-                        color: const Color(0XFF5D4037),
-                        fontWeight: FontWeight.w500,
-                      ),
-                      indicatorColor: const Color(0XFF5D4037),
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      dividerColor: const Color(0XFFEFEBE9),
-                      controller: tabController,
-                      unselectedLabelColor: const Color(0XFF868686),
-                      tabs: const [
-                        Tab(text: 'Coffee'),
-                        Tab(text: 'Non Coffee'),
-                        Tab(text: 'Pastry'),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 355.h,
-                      child: TabBarView(
-                        physics: const NeverScrollableScrollPhysics(),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const sb.SearchBar(),
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const CarouselHomeScreen(),
+                      TabBar(
+                        labelPadding: EdgeInsets.zero,
+                        labelStyle: TextStyle(
+                          fontSize: 16.sp,
+                          color: const Color(0XFF5D4037),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        indicatorColor: const Color(0XFF5D4037),
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        dividerColor: const Color(0XFFEFEBE9),
                         controller: tabController,
-                        children: const [
-                          CoffeeTab(),
-                          CoffeeTab(),
-                          CoffeeTab(),
+                        unselectedLabelColor: const Color(0XFF868686),
+                        tabs: const [
+                          Tab(text: 'Coffee'),
+                          Tab(text: 'Non Coffee'),
+                          Tab(text: 'Pastry'),
                         ],
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 355.h,
+                        child: TabBarView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          controller: tabController,
+                          children: const [
+                            CoffeeTab(),
+                            CoffeeTab(),
+                            CoffeeTab(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
